@@ -3,29 +3,28 @@ import math
 
 win = graphics.GraphWin("Graphics Window", 500, 500)
 
-pt1 = graphics.Point(300, 250)
-pt2 = graphics.Point(200, 250)
-pt3 = graphics.Point(250, 200)
-pt4 = graphics.Point(250, 300)
-ptUpperLeft = graphics.Point(250 - (25 * math.sqrt(2)), 250 - (25 * math.sqrt(2)))
-ptUpperRight = graphics.Point(250 + (25 * math.sqrt(2)), 250 - (25 * math.sqrt(2)))
-ptLowerLeft = graphics.Point(250 - (25 * math.sqrt(2)), 250 + (25 * math.sqrt(2)))
-ptLowerRight = graphics.Point(250 + (25 * math.sqrt(2)), 250 + (25 * math.sqrt(2)))
+pt0 = graphics.Point(275, 250)
+pt30 = graphics.Point(250 + 40 * math.cos(math.pi/6), 250 - 40 * math.sin(math.pi/6))
+pt60 = graphics.Point(250 + 60 * math.cos(math.pi/3), 250 - 60 * math.sin(math.pi/3))
+pt90 = graphics.Point(250, 200)
+pt120 = graphics.Point(250 - (30 * math.cos(math.pi/3)), 250 - (30 * math.sin(math.pi/3)))
+pt150 = graphics.Point(250, 250)
 
-cir = graphics.Circle(pt1, 5)
-cir2 = graphics.Circle(pt2, 5)
-cir3 = graphics.Circle(pt3, 5)
-cir4 = graphics.Circle(pt4, 5)
-cir5 = graphics.Circle(ptUpperLeft, 5)
-cir6 = graphics.Circle(ptUpperRight, 5)
-cir7 = graphics.Circle(ptLowerLeft, 5)
-cir8 = graphics.Circle(ptLowerRight, 5)
-cirEnc = graphics.Circle(graphics.Point(250, 250), 50)
 
-lineVert = graphics.Line(graphics.Point(250,200), graphics.Point(250,300))
-lineHoriz = graphics.Line(graphics.Point(200, 250), graphics.Point(300, 250))
-lineDownLeft = graphics.Line(graphics.Point(250 - (25 * math.sqrt(2)), 250 - (25 * math.sqrt(2))), graphics.Point(250 + (25 * math.sqrt(2)), 250 + 25 * (math.sqrt(2))))
-lineUpRight = graphics.Line(graphics.Point(250 - (25 * math.sqrt(2)), 250 + (25 * math.sqrt(2))), graphics.Point(250 + (25 * math.sqrt(2)), 250 - 25 * (math.sqrt(2))))
+cir = graphics.Circle(pt0, 5)
+cir2 = graphics.Circle(pt30, 5)
+cir3 = graphics.Circle(pt60, 5)
+cir4 = graphics.Circle(pt90, 5)
+cir5 = graphics.Circle(pt120, 5)
+cir6 = graphics.Circle(pt150, 5)
+cirEnc = graphics.Circle(graphics.Point(250, 250), 100)
+
+lineVert = graphics.Line(graphics.Point(250, 150), graphics.Point(250,350))
+lineHoriz = graphics.Line(graphics.Point(150, 250), graphics.Point(350, 250))
+line30 = graphics.Line(graphics.Point(250 - (100 * math.cos(math.pi/6)), (250 + 100 * (math.sin(math.pi/6)))), graphics.Point(250 + (100 * math.cos(math.pi/6)), 250 - (100 * math.sin(math.pi/6))))
+line60 = graphics.Line(graphics.Point(250 - (100 * math.cos(math.pi/3)), (250 + 100 * (math.sin(math.pi/3)))), graphics.Point(250 + (100 * math.cos(math.pi/3)), 250 - (100 * math.sin(math.pi/3))))
+line120 = graphics.Line(graphics.Point(250 - (100 * math.cos(math.pi/3)), (250 - 100 * (math.sin(math.pi/3)))), graphics.Point(250 + (100 * math.cos(math.pi/3)), 250 + (100 * math.sin(math.pi/3))))
+line150 = graphics.Line(graphics.Point(250 - (100 * math.cos(math.pi/6)), (250 - 100 * (math.sin(math.pi/6)))), graphics.Point(250 + (100 * math.cos(math.pi/6)), 250 + (100 * math.sin(math.pi/6))))
 
 cirEnc.draw(win)
 cir.draw(win)
@@ -34,12 +33,13 @@ cir3.draw(win)
 cir4.draw(win)
 cir5.draw(win)
 cir6.draw(win)
-cir7.draw(win)
-cir8.draw(win)
+
 lineVert.draw(win)
 lineHoriz.draw(win)
-lineDownLeft.draw(win)
-lineUpRight.draw(win)
+line30.draw(win)
+line60.draw(win)
+line120.draw(win)
+line150.draw(win)
 
 dx = 0.1
 dy = -0.1
@@ -49,12 +49,12 @@ dyDiag = 0.1 * math.sqrt(2) / 2
 win.getMouse()
 
 while True:
-    if cir.getCenter().getX() >= 300:
+    if cir.getCenter().getX() >= 350:
         dx = -0.1
         dy = 0.1
         dxDiag = 0.1 * math.sqrt(2) / 2
         dyDiag = 0.1 * math.sqrt(2) / 2
-    if cir.getCenter().getX() <= 200:
+    if cir.getCenter().getX() <= 150:
         dx = -dx
         dy = -dy
         dxDiag = -dxDiag
@@ -66,5 +66,5 @@ while True:
     cir4.move(0, -dy)
     cir5.move(dxDiag, dyDiag)
     cir6.move(-dxDiag, dyDiag)
-    cir7.move(dxDiag, -dyDiag)
-    cir8.move(-dxDiag, -dyDiag)
+
+
